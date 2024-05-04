@@ -1,4 +1,8 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
   ConfigurableProduct,
@@ -6,7 +10,7 @@ import {
   GroupedProduct,
   Product,
 } from 'src/functions/entities';
-import { Repository } from 'typeorm';
+import { QueryFailedError, Repository } from 'typeorm';
 
 @Injectable()
 export class ProductsService {
@@ -17,12 +21,24 @@ export class ProductsService {
 
   async create(product: Product): Promise<Product> {
     this.validateProduct(product);
-    return this.productRepository.save(product);
+    try {
+      return await this.productRepository.save(product);
+    } catch (error) {
+      if (error instanceof QueryFailedError) {
+        throw new BadRequestException('Erro em produto ' + error.message);
+      }
+      throw error;
+    }
   }
 
   async update(id: number, updatedProduct: Partial<Product>): Promise<Product> {
     this.validateProduct(updatedProduct);
-    return this.productRepository.save({ ...updatedProduct, id });
+    const existingProduct = await this.productRepository.findOneBy({ id });
+    if (!existingProduct) {
+      throw new NotFoundException(`Product with ID "${id}" not found`);
+    }
+    Object.assign(existingProduct, updatedProduct);
+    return this.productRepository.save(existingProduct);
   }
 
   private validateProduct(product: Partial<Product>): void {

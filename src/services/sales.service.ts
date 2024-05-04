@@ -23,8 +23,10 @@ export class SalesService {
         );
       }
 
-      // Verifique se é um produto simples antes de acessar o estoque
-      if (product instanceof SimpleProduct) {
+      console.log(product);
+
+      if (product.type == 'simple') {
+        console.log('simple');
         if (product.stock < item.quantity) {
           throw new BadRequestException(
             `Estoque insuficiente para ID do produto ${item.id}.`,
@@ -34,8 +36,10 @@ export class SalesService {
         product.stock -= item.quantity;
         await this.productRepository.save(product);
       }
-    }
 
+      sale.total_value = product.sale_value * item.quantity;
+    }
+    return sale;
     return this.saleRepository.save(sale);
   }
 

@@ -7,23 +7,26 @@ import {
 } from 'typeorm';
 
 @Entity('products')
+
 @TableInheritance({ column: { type: 'varchar', name: 'type' } })
 export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({unique: true})
   name: string;
 
   @Column()
   description: string;
 
-  @Column('float')
-  @Column('decimal', { nullable: false, default: 0.0 })
+  @Column('float', { nullable: false, default: 0.0 })
   sale_value: number;
 
   @Column({ type: 'varchar' })
   type: string;
+
+  @Column({ nullable: true })
+  stock?: number
 }
 
 @ChildEntity('simple')
