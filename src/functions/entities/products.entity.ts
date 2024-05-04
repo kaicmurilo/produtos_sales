@@ -18,17 +18,17 @@ export class Product {
   @Column()
   description: string;
 
-  @Column('decimal')
+  @Column('float')
+  @Column('decimal', { nullable: false, default: 0.0 })
   sale_value: number;
 
   @Column({ type: 'varchar' })
   type: string;
-
 }
 
 @ChildEntity('simple')
 export class SimpleProduct extends Product {
-  @Column({ default: 0 })
+  @Column({ nullable: true, default: 0 })
   stock: number;
 }
 

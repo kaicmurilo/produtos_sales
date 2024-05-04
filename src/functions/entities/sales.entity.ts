@@ -1,8 +1,4 @@
-import {
-  Entity,
-  Column,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('sales')
 export class Sale {
@@ -15,7 +11,7 @@ export class Sale {
   @Column()
   description: string;
 
-  @Column('decimal')
+  @Column('decimal', { nullable: false, default: 0.0 })
   total_value: number;
 
   @Column('json')
