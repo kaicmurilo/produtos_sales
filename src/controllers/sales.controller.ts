@@ -12,10 +12,12 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiResponse,
+  ApiBody,
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { SalesService } from '../services/sales.service';
-import { Sale } from 'src/functions/entities';
+import { SaleDto } from 'src/functions/dtos';
+
 
 @ApiTags('sales')
 @ApiBearerAuth()
@@ -43,7 +45,8 @@ export class SalesController {
   @ApiOperation({ summary: 'Criar uma nova venda' })
   @ApiResponse({ status: 201, description: 'Venda criada' })
   @ApiResponse({ status: 400, description: 'Entrada inválida' })
-  create(@Body() sale: Sale) {
+  @ApiBody({ type: SaleDto })
+  create(@Body() sale: SaleDto) {
     return this.salesService.create(sale);
   }
 

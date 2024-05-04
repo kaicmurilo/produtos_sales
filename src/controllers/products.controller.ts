@@ -13,10 +13,12 @@ import {
   ApiBearerAuth,
   ApiOperation,
   ApiResponse,
+  ApiBody,
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { ProductsService } from '../services/products.service';
 import { Product } from 'src/functions/entities';
+import { ProductDto } from 'src/functions/dtos';
 
 @ApiTags('products')
 @ApiBearerAuth()
@@ -26,14 +28,14 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Get()
-  @ApiOperation({ summary: 'Recuperar Todos os produtos' })
+  @ApiOperation({ summary: 'Recuperar todos os produtos' })
   @ApiResponse({ status: 200, description: 'Sucesso' })
   findAll() {
     return this.productsService.findAll();
   }
 
   @Get(':id')
-  @ApiOperation({ summary: 'Retrieve a single product' })
+  @ApiOperation({ summary: 'Recuperar um único produto' })
   @ApiResponse({ status: 200, description: 'Sucesso' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado' })
   findOne(@Param('id') id: number) {
@@ -41,23 +43,25 @@ export class ProductsController {
   }
 
   @Post()
-  @ApiOperation({ summary: 'Create a new product' })
+  @ApiOperation({ summary: 'Criar novo produto' })
   @ApiResponse({ status: 201, description: 'Produto criado' })
   @ApiResponse({ status: 400, description: 'Entrada inválida' })
-  create(@Body() product: Product) {
+  @ApiBody({ type: ProductDto })
+  create(@Body() product: ProductDto) {
     return this.productsService.create(product);
   }
 
   @Put(':id')
-  @ApiOperation({ summary: 'Update an existing product' })
-  @ApiResponse({ status: 200, description: 'Produto Atualizado' })
+  @ApiOperation({ summary: 'Atualizar produto existente' })
+  @ApiResponse({ status: 200, description: 'Produto atualizado' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado' })
-  update(@Param('id') id: number, @Body() updatedProduct: Partial<Product>) {
+  @ApiBody({ type: ProductDto })
+  update(@Param('id') id: number, @Body() updatedProduct: Partial<ProductDto>) {
     return this.productsService.update(id, updatedProduct);
   }
 
   @Delete(':id')
-  @ApiOperation({ summary: 'Delete a product' })
+  @ApiOperation({ summary: 'Deletar um produto' })
   @ApiResponse({ status: 200, description: 'Produto excluído' })
   @ApiResponse({ status: 404, description: 'Produto não encontrado' })
   delete(@Param('id') id: number) {
