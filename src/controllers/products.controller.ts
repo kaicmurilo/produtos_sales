@@ -15,8 +15,8 @@ import {
   ApiResponse,
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { ProductsService } from './products.service';
-import { Product } from 'src/entities';
+import { ProductsService } from '../services/products.service';
+import { Product } from 'src/functions/entities';
 
 @ApiTags('products')
 @ApiBearerAuth()

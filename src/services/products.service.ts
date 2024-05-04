@@ -5,7 +5,7 @@ import {
   DigitalProduct,
   GroupedProduct,
   Product,
-} from 'src/entities';
+} from 'src/functions/entities';
 import { Repository } from 'typeorm';
 
 @Injectable()

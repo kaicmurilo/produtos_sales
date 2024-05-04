@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from '../controllers/app.controller';
+import { AppService } from '../services/app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductsModule } from './products/products.module';
-import { SalesModule } from './sales/sales.module'; // Importar o módulo de vendas
-import { AuthModule } from './auth/auth.module';
-import { Product, Sale, User } from './entities';
+import { ProductsModule } from './products.module';
+import { SalesModule } from './sales.module'; // Importar o módulo de vendas
+import { AuthModule } from './auth.module';
+import { Product, Sale, User } from '../functions/entities';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({

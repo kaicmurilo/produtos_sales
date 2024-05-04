@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ProductsService } from './products.service';
-import { ProductsController } from './products.controller';
+import { ProductsService } from '../services/products.service';
+import { ProductsController } from '../controllers/products.controller';
 import {
   ConfigurableProduct,
   DigitalProduct,
@@ -10,7 +10,7 @@ import {
   Product,
   Sale,
   SimpleProduct,
-} from 'src/entities';
+} from 'src/functions/entities';
 
 @Module({
   imports: [

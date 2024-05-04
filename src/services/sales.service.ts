@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Product, Sale, SimpleProduct } from 'src/entities';
+import { Product, Sale, SimpleProduct } from 'src/functions/entities';
 import { Repository } from 'typeorm';
 
 @Injectable()
