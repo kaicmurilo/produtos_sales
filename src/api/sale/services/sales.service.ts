@@ -25,7 +25,6 @@ export class SalesService {
       throw new BadRequestException(`CPF inválido.`);
     }
 
-
     for (const item of sale.items) {
       const product = await this.productRepository.findOneBy({ id: item.id });
       if (!product) {
@@ -56,7 +55,10 @@ export class SalesService {
   }
 
   private async verify_stock(product: Product, quantity: number) {
-    if (product.type in ['simple', 'configurable']) {
+    if (
+      product.product_type === 'simple' ||
+      product.product_type === 'configurable'
+    ) {
       if (product.stock < quantity) {
         throw new BadRequestException(
           `Estoque insuficiente para ID do produto ${product.id}.`,

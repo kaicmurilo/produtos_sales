@@ -22,8 +22,8 @@ export class Product {
   @Column('float', { nullable: false, default: 0.0 })
   sale_value: number;
 
-  @Column({ type: 'varchar' })
-  type: string;
+  @Column({ nullable: false, default: 'simple' })
+  product_type: string;
 
   @Column({ nullable: true })
   stock?: number

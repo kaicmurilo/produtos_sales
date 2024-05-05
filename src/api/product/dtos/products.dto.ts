@@ -14,7 +14,7 @@ export class ProductDto {
   sale_value: number;
 
   @ApiProperty({ example: 'simple', description: 'Tipo do produto' })
-  type: string;
+  product_type: string;
 }
 
 export class SimpleProductDto extends ProductDto {
@@ -22,7 +22,7 @@ export class SimpleProductDto extends ProductDto {
   stock: number;
 
   @ApiProperty({ example: 'simple' })
-  type = 'simple';
+  product_type = 'simple';
 }
 
 export class DigitalProductDto extends ProductDto {
@@ -30,7 +30,7 @@ export class DigitalProductDto extends ProductDto {
   download_link: string;
 
   @ApiProperty({ example: 'digital' })
-  type = 'digital';
+  product_type = 'digital';
 }
 
 export class ConfigurableProductDto extends ProductDto {
@@ -41,7 +41,7 @@ export class ConfigurableProductDto extends ProductDto {
   stock: number;
   
   @ApiProperty({ example: 'configurable' })
-  type = 'configurable';
+  product_type = 'configurable';
 }
 
 export class GroupedProductDto extends ProductDto {
@@ -49,5 +49,5 @@ export class GroupedProductDto extends ProductDto {
   associated_products: number[];
 
   @ApiProperty({ example: 'grouped' })
-  type = 'grouped';
+  product_type = 'grouped';
 }

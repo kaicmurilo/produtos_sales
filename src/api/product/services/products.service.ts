@@ -6,7 +6,12 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { QueryFailedError, Repository } from 'typeorm';
-import { ConfigurableProduct, DigitalProduct, GroupedProduct, Product } from '../entities/products.entity';
+import {
+  ConfigurableProduct,
+  DigitalProduct,
+  GroupedProduct,
+  Product,
+} from '../entities/products.entity';
 
 @Injectable()
 export class ProductsService {
@@ -37,8 +42,19 @@ export class ProductsService {
     return this.productRepository.save(existingProduct);
   }
 
+  findAll(): Promise<Product[]> {
+    return this.productRepository.find();
+  }
+
+  findOne(id: number): Promise<Product> {
+    return this.productRepository.findOneBy({ id });
+  }
+
+  async delete(id: number): Promise<void> {
+    await this.productRepository.delete(id);
+  }
   private validateProduct(product: Partial<Product>): void {
-    switch (product.type) {
+    switch (product.product_type) {
       case 'simple':
         this.validateSimpleProduct(product);
         break;
@@ -104,17 +120,5 @@ export class ProductsService {
         'O produto agrupado deve ter nome, descrição, valor de venda e produtos associados',
       );
     }
-  }
-
-  findAll(): Promise<Product[]> {
-    return this.productRepository.find();
-  }
-
-  findOne(id: number): Promise<Product> {
-    return this.productRepository.findOneBy({ id });
-  }
-
-  async delete(id: number): Promise<void> {
-    await this.productRepository.delete(id);
   }
 }
