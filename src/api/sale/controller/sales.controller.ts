@@ -16,7 +16,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { SalesService } from '../services/sales.service';
-import { SaleDto } from 'src/functions/dtos';
+import { SaleDto } from '../dtos/sales.dto';
 
 
 @ApiTags('sales')

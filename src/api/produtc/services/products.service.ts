@@ -4,13 +4,9 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import {
-  ConfigurableProduct,
-  DigitalProduct,
-  GroupedProduct,
-  Product,
-} from 'src/functions/entities';
+
 import { QueryFailedError, Repository } from 'typeorm';
+import { ConfigurableProduct, DigitalProduct, GroupedProduct, Product } from '../entities/products.entity';
 
 @Injectable()
 export class ProductsService {

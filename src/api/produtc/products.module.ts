@@ -1,16 +1,11 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { ProductsService } from '../services/products.service';
-import { ProductsController } from '../controllers/products.controller';
-import {
-  ConfigurableProduct,
-  DigitalProduct,
-  GroupedProduct,
-  Product,
-  Sale,
-  SimpleProduct,
-} from 'src/functions/entities';
+import { ProductsService } from './services/products.service';
+import { ProductsController } from './controller/products.controller';
+import { ConfigurableProduct, DigitalProduct, GroupedProduct, Product, SimpleProduct } from './entities/products.entity';
+import { Sale } from '../sale';
+
 
 @Module({
   imports: [

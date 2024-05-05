@@ -37,6 +37,9 @@ export class ConfigurableProductDto extends ProductDto {
   @ApiProperty({ example: { color: 'vermelho', size: 'M' } })
   attributes: Record<string, string>;
 
+  @ApiProperty({ example: 10 })
+  stock: number;
+  
   @ApiProperty({ example: 'configurable' })
   type = 'configurable';
 }

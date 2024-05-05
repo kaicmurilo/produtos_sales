@@ -17,8 +17,7 @@ import {
 } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { ProductsService } from '../services/products.service';
-import { Product } from 'src/functions/entities';
-import { ProductDto } from 'src/functions/dtos';
+import { ProductDto } from '../dtos/products.dto';
 
 @ApiTags('products')
 @ApiBearerAuth()

@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from '../controllers/app.controller';
-import { AppService } from '../services/app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductsModule } from './products.module';
-import { SalesModule } from './sales.module'; // Importar o módulo de vendas
-import { AuthModule } from './auth.module';
-import { Product, Sale, User } from '../functions/entities';
+import { ProductsModule } from './produtc/products.module';
+import { SalesModule } from './sale/sales.module';
+import { AuthModule } from './auth_user/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Sale } from './sale';
+import { Product } from './produtc';
+import { User } from './auth_user/entities/user.entity';
 
 @Module({
   imports: [
@@ -31,7 +31,5 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     SalesModule,
     AuthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
