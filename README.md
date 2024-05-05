@@ -37,3 +37,19 @@ A API disponibiliza uma interface Swagger para documentação interativa. Após 
 A estrutura do projeto segue a arquitetura padrão do NestJS:
 
 - **`src/`**: Contém o código-fonte principal, incluindo módulos, controladores, serviços e entidades.
+
+
+Aqui está uma descrição sucinta sobre a funcionalidade de controle de taxa de requisições (rate limiting) que você pode incluir no arquivo `README.md`:
+
+---
+
+## Rate Limiting
+
+A Product Sales API implementa controle de taxa de requisições (rate limiting) usando o `ThrottlerModule` do NestJS. Esta funcionalidade é crucial para proteger a API contra ataques de negação de serviço (DoS) e para assegurar uma distribuição justa dos recursos do servidor entre todos os usuários.
+
+### Configuração do Rate Limiting
+
+- **Time to Live (ttl)**: O intervalo de tempo, em milissegundos, pelo qual o limite de requisições é calculado. Atualmente, está configurado para 60000 milissegundos (1 minuto), durante o qual um usuário pode fazer até 10 requisições.
+- **Limit**: O número máximo de requisições que um usuário pode fazer dentro do período definido pelo `ttl`. Este valor está configurado para 10 requisições por minuto.
+
+Essa configuração ajuda a prevenir o abuso da API, mantendo a performance e a disponibilidade do serviço para todos os usuários.

@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Sale } from './sale';
 import { Product } from './produtc';
 import { User } from './auth_user/entities/user.entity';
+import { ThrottlerModule } from '@nestjs/throttler';
 
 @Module({
   imports: [
@@ -27,6 +28,12 @@ import { User } from './auth_user/entities/user.entity';
         synchronize: true,
       }),
     }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60000,
+        limit: 10,
+      },
+    ]),
     ProductsModule,
     SalesModule,
     AuthModule,
