@@ -3,7 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { SalesService } from './services/sales.service';
 import { SalesController } from './controller/sales.controller';
 import { Sale } from './entities/sales.entity';
-import { Product } from '../produtc';
+import { Product } from '../product';
+
 
 
 @Module({

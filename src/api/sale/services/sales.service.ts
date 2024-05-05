@@ -3,8 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
 import { Sale } from '../entities/sales.entity';
-import { Product } from 'src/api/produtc';
 import { isCpfValid, isEmailValid } from 'src/functions/validators';
+import { Product } from 'src/api/product';
 
 @Injectable()
 export class SalesService {

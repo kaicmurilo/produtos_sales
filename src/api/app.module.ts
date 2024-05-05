@@ -1,13 +1,15 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProductsModule } from './produtc/products.module';
+
 import { SalesModule } from './sale/sales.module';
 import { AuthModule } from './auth_user/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { Sale } from './sale';
-import { Product } from './produtc';
+
 import { User } from './auth_user/entities/user.entity';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { ProductsModule } from './product/products.module';
+import { Product } from './product';
 
 @Module({
   imports: [
