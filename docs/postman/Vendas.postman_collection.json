@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "d5cb808d-c330-4e4f-ac32-dddbd70e232c",
+		"name": "Vendas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1682417"
+	},
+	"item": [
+		{
+			"name": "Criar Venda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sale_date\": \"2024-05-03T15:00:00.000Z\",\r\n    \"description\": \"Venda de Produto Simples\",\r\n    \"items\": [\r\n        {\r\n            \"id\": 40,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"client\": {\r\n        \"name\": \"John Doe\",\r\n        \"cpf\": \"000.000.000-00\",\r\n        \"email\": \"johndoe@example.com\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar Venda Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"sale_date\": \"2024-05-03T15:00:00\",\r\n  \"description\": \"Uma venda de teste\",\r\n  \"total_value\": 200,\r\n  \"items\": [\r\n    {\r\n      \"id\": 8,\r\n      \"description\": \"Item 1\",\r\n      \"quantity\": 2,\r\n      \"unit_value\": 100,\r\n      \"total_value\": 200\r\n    }\r\n  ],\r\n  \"client\": {\r\n    \"name\": \"João Silva\",\r\n    \"cpf\": \"000.000.000-00\",\r\n    \"email\": \"joaosilva@example.com\"\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Vendas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/sales",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Venda por ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/sales/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sales",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Excluir Venda",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/sales/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"sales",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

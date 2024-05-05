@@ -38,7 +38,6 @@ A estrutura do projeto segue a arquitetura padrão do NestJS:
 
 - **`src/`**: Contém o código-fonte principal, incluindo módulos, controladores, serviços e entidades.
 
-
 Aqui está uma descrição sucinta sobre a funcionalidade de controle de taxa de requisições (rate limiting) que você pode incluir no arquivo `README.md`:
 
 ---
@@ -53,3 +52,36 @@ A Product Sales API implementa controle de taxa de requisições (rate limiting)
 - **Limit**: O número máximo de requisições que um usuário pode fazer dentro do período definido pelo `ttl`. Este valor está configurado para 10 requisições por minuto.
 
 Essa configuração ajuda a prevenir o abuso da API, mantendo a performance e a disponibilidade do serviço para todos os usuários.
+
+
+## Documentação das Collections de Teste
+
+
+### Introdução
+
+Este README fornece informações sobre as coleções de teste disponíveis para este projeto. As coleções estão localizadas na pasta `/docs/postman`.
+
+
+### Estrutura de Pasta
+
+
+-`/docs/postman`
+  -`Produtos.postman_collection.json`: Requisições para produtos.
+  -`Usuarios.postman_collection.json`: Requisições de usuários, registro e login.
+  -`Vendas.postman_collection.json`: Requisições de vendas. 
+
+
+### Como Utilizar
+
+
+1. Baixe a coleção desejada para o seu ambiente de desenvolvimento.
+2. Importe a coleção para o Postman.
+3. Acesse as variáveis de ambiente, se necessário, e configure conforme o ambiente desejado (por exemplo: desenvolvimento, teste, produção).
+4. Execute as solicitações para testar a API.
+
+
+#### Observações
+
+
+
+Certifique-se de que o ambiente de destino está configurado corretamente antes de executar os testes. Sempre verifique se há atualizações nas coleções, especialmente se houver mudanças significativas na API.
