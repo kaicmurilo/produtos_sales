@@ -25,7 +25,7 @@ export class SalesService {
       throw new BadRequestException(`CPF inválido.`);
     }
 
-    
+
     for (const item of sale.items) {
       const product = await this.productRepository.findOneBy({ id: item.id });
       if (!product) {
@@ -36,7 +36,6 @@ export class SalesService {
       this.verify_stock(product, item.quantity);
       sale.total_value = this.calc_sale(item.quantity, product.sale_value);
     }
-    return sale;
     return this.saleRepository.save(sale);
   }
 
